@@ -1,0 +1,4 @@
+[
+    { "caption": "Flog Report", "command": "flog_report" },
+    { "caption": "Flog - Mark Complex Methods", "command": "flog_highlighter" }
+]
