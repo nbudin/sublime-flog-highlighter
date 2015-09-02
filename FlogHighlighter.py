@@ -7,14 +7,14 @@ class FlogOnSave(sublime_plugin.EventListener):
 
 class FlogHighlighterCommand(sublime_plugin.TextCommand):
   def run(self, edit):
-    print "Running flog on", self.view.file_name()
+    # print "Running flog on", self.view.file_name()
 
-    script_name = os.path.join(sublime.packages_path(), 'FlogHighlighter', 'flog_formatter.rb')
+    script_name = os.path.join(sublime.packages_path(), 'sublime-flog-highlighter', 'flog_formatter.rb')
     popen = subprocess.Popen([script_name, self.view.file_name()], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     popen.wait()
 
     if popen.returncode == 0:
-      notes = json.load(popen.stdout)
+      notes = json.loads(popen.stdout.read())
       if len(notes) == 0:
         return
 
@@ -34,7 +34,8 @@ class FlogHighlighterCommand(sublime_plugin.TextCommand):
       self.view.add_regions('flog_highlighter_warning', regions['warning'], 'invalid.illegal', 'bookmark', sublime.DRAW_OUTLINED)
       self.view.add_regions('flog_highlighter_error', regions['error'], 'invalid.illegal', 'bookmark')
     else:
-      self.view.window().show_quick_panel(popen.stderr.readlines(), None)
+      print(popen.stderr.read())
+      # self.view.window().show_quick_panel(popen.stderr.readlines(), None)
 
 class FlogReportCommand(sublime_plugin.TextCommand):
   def run(self, edit):
