@@ -1,14 +1,23 @@
-# Flog Highlighting for Sublime Text
+# Flog Highlighting for Sublime Text 2 and 3
 
 ## Installation
 
-First, install the `flog` and `json` gems to your system Ruby:
+First, install the `flog` and `json` gems to your *system* Ruby (and yes, you
+really do have to use sudo for this, and call `/usr/bin/gem` directly):
 
 ```bash
 sudo /usr/bin/gem install flog json
 ```
 
-Then clone this plugin into your Sublime Text plugins directory:
+Then clone this plugin into your Sublime Text plugins directory.  For Sublime
+Text 3, do:
+
+```bash
+cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
+git clone git@github.com:nbudin/sublime-flog-highlighter.git
+```
+
+If you're still on ST2, then do this:
 
 ```bash
 cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
