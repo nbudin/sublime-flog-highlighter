@@ -38,7 +38,7 @@ class FlogHighlighterCommand(sublime_plugin.TextCommand):
         self.view.add_regions('flog_highlighter_warning', regions['warning'], 'invalid.illegal', 'bookmark', sublime.DRAW_OUTLINED)
         self.view.add_regions('flog_highlighter_error', regions['error'], 'invalid.illegal', 'bookmark')
       else:
-        show_errors(self.view.window(), self.popen.stderr.read(), edit)
+        show_errors(self.view.window(), "Flog output:\n\n" + popen.stdout.read().decode('utf-8') + popen.stderr.read().decode('utf-8'), edit)
     except Exception as e:
       show_errors(self.view.window(), traceback.format_exc(), edit)
 
