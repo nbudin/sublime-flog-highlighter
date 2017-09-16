@@ -31,7 +31,7 @@ class FlogHighlighterCommand(sublime_plugin.TextCommand):
           'error': []
         }
         for note in notes:
-          line = lines[int(note['line']) - 1]
+          line = lines[int(note['line'].split('-')[0]) - 1]
           regions[note['level']].append(line)
 
         self.view.add_regions('flog_highlighter_note', regions['note'], 'string', 'bookmark', sublime.DRAW_OUTLINED)
